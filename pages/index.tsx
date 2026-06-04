@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
     {
       type: 'Technical',
       subTypes: ['Backend', 'Applied Skills', 'DSA'],
-      description: 'Test your technical and professional knowledge',
+      description: 'Test your technical knowledge',
       color: 'bg-blue-500'
     },
     {
