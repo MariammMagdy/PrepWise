@@ -47,8 +47,8 @@ const HomePage: React.FC = () => {
   const interviewTypes = [
     {
       type: 'Technical',
-      subTypes: ['Backend', 'Frontend', 'DSA'],
-      description: 'Test your coding and technical knowledge',
+      subTypes: ['Backend', 'Applied Skills', 'DSA'],
+      description: 'Test your technical and professional knowledge',
       color: 'bg-blue-500'
     },
     {
@@ -58,9 +58,9 @@ const HomePage: React.FC = () => {
       color: 'bg-green-500'
     },
     {
-      type: 'System Design',
-      subTypes: ['Architecture', 'Scalability', 'Performance'],
-      description: 'Design complex systems and architectures',
+      type: 'HR',
+      subTypes: ['Career', 'Scalability', 'Collaboration'],
+      description: 'Practice human resources questions',
       color: 'bg-purple-500'
     }
   ];
