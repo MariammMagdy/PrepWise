@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
 
   const interviewTypes = [
     {
-      type: 'Technical',
+      type: 'Technicall',
       subTypes: ['Backend', 'Applied Skills', 'DSA'],
       description: 'Test your technical knowledge',
       color: 'bg-blue-500'
