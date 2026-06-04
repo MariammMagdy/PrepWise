@@ -1,0 +1,7 @@
+{
+  "css.validate": false,
+  "stylelint.enable": false,
+  "js/ts.preferences.includePackageJsonAutoImports": "off",
+  "js/ts.suggest.autoImports": false,
+  "typescript.tsserver.automaticTypeAcquisition.enabled": false
+}
