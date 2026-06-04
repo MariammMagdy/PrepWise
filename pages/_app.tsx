@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
-import '@/styles/app.css'
+import '../styles/app.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
