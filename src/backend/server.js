@@ -11,7 +11,9 @@ const aiRoutes = require('./services/ai');
 
 // Load environment variables
 //dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
 dotenv.config({ path: path.join(__dirname, '../../.env') });
+}
 
 // Connect to database
 connectDB();
@@ -20,7 +22,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://prep-wise-seven-nu.vercel.app',
+    'http://localhost:3000'
+  ],
+  credentials: true
+}));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 

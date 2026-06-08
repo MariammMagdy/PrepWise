@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "server": "nodemon src/backend/server.js",
-    "dev:all": "concurrently \"next dev\" \"node src/backend/server.js\""
+    "dev:all": "concurrently \"next dev\" \"node src/backend/server.js\"",
+    "start:backend": "node src/backend/server.js"
   },
   "dependencies": {
     "@types/node": "^20.14.10",
