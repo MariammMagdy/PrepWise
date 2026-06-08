@@ -3,6 +3,7 @@ const Interview = require('../../DB/models/Interview');
 const User = require('../../DB/models/User');
 const { protect } = require('../middleware/auth');
 const axios = require('axios');
+const BASE_URL = process.env.BACKEND_URL || 'http://localhost:3001';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.post('/create', protect, async (req, res) => {
     const { type, subType, difficulty, settings } = req.body;
     
     // Generate questions using AI service
-    const questionsResponse = await axios.post('http://localhost:3001/api/ai/generate-questions', {
+    const questionsResponse = await axios.post(`${BASE_URL}/api/ai/generate-questions`, {
       type,
       subType,
       difficulty,
@@ -166,7 +167,7 @@ router.post('/:id/answer', protect, async (req, res) => {
     }
 
     // Evaluate answer using AI
-    const evaluationResponse = await axios.post('http://localhost:3001/api/ai/evaluate-answer', {
+    const evaluationResponse = await axios.post(`${BASE_URL}/api/ai/evaluate-answer`, {
       question: question.question,
       answer,
       type: interview.type,
@@ -174,7 +175,7 @@ router.post('/:id/answer', protect, async (req, res) => {
     });
 
     // Behavioral analysis
-    const behavioralResponse = await axios.post('http://localhost:3001/api/ai/behavioral-analysis', {
+    const behavioralResponse = await axios.post(`${BASE_URL}/api/ai/behavioral-analysis`, {
       answer,
       timeTaken,
       wordCount: answer.split(' ').length
@@ -224,7 +225,7 @@ router.post('/:id/answer', protect, async (req, res) => {
     // Generate follow-up question if adaptive mode is on
     let followUpQuestion = null;
     if (interview.settings.adaptiveMode && evaluationResponse.data.evaluation.score < 70) {
-      const followUpResponse = await axios.post('http://localhost:3001/api/ai/follow-up', {
+      const followUpResponse = await axios.post(`${BASE_URL}/api/ai/follow-up`, {
         originalQuestion: question.question,
         answer,
         conversationHistory: interview.conversation
@@ -339,7 +340,7 @@ router.post('/:id/complete', protect, async (req, res) => {
     const reportData = completion.data.evaluation.feedback || '{}';
     const report = JSON.parse(reportData);*/
 
-    const reportResponse = await axios.post('http://localhost:3001/api/ai/generate-report', {
+    const reportResponse = await axios.post(`${BASE_URL}/api/ai/generate-report`, {
       interviewType: interview.type,
       difficulty: interview.difficulty,
       overallScore,
